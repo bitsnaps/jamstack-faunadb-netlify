@@ -4,8 +4,9 @@ import axios from 'axios'
 const Home = () => {
 
   const fetchData = async() => {
-    const results = await axios.post('/api/helloworld')
-    console.log(results.data.msg)
+    // const results = await axios.post('/api/helloworld')
+    const results = await axios.post('/api/getLinks')
+    console.log(results.data)
   }
 
   useEffect(() => {
