@@ -5,31 +5,20 @@ import LinkForm from '../components/LinkForm'
 
 const Home = () => {
 
-  // eslint-disable-next-line
   const [ links, setLinks ] = useState([])
 
   const loadLinks = async() => {
     try {
-      // const results = await axios.post('/api/endpoints')
+      /*/ const results = await axios.post('/api/endpoints')
+      const links = await axios.post('/api/getLinks')
+        .catch(function (err) {
+          console.error(err)
+        })
+        .then( (response) => {
+          return response.data
+        })*/
 
-      // const res = await axios.post('/api/getLinks')
-
-      // const instance = await axios.create({
-      //   baseURL: '/.netlify/functions/getLinks',
-      //   headers: {
-      //     'Access-Control-Allow-Origin' : '*'
-      //   }
-      // })
-      // const links = await instance.post().then( (results) => { results })
-
-      const res = await fetch('/api/getLinks'/*,{
-        headers : {
-          //'mode': 'no-cors',
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          "Access-Control-Allow-Origin": "*"
-         }
-      }*/)
+      const res = await fetch('/api/getLinks')
       const links = await res.json()
       setLinks(links)
 
