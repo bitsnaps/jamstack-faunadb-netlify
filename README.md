@@ -15,6 +15,12 @@ npm install netlify-cli --save-dev
 sudo npm install netlify-cli --global
 ```
 
+## Configure a DB at Faunadb
+- You need to create a free account at [Fauna](fauna.com) and create a new empty database
+- Go to GraphQL panel and import `links.gql` to create a schema
+- Create an API at `Security` then click `NEW KEY` on the DB you've created with Role `Server`
+- Save the key at `.env` file with a variable name: `FAUNA_SECRET_KEY`.
+
 ## Run the app
 Now you can run the app on netlify local dev mode using:
 ```
