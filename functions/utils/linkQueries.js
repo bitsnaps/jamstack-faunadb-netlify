@@ -1,5 +1,17 @@
-const getAllLinks = 'SELECT * FROM links.link;'
+const GET_LINKS = `
+# Write your query or mutation here
+query {
+  allLinks {
+    data {
+      name
+      url
+      description
+      _id
+      archived
+    }
+  }
+}`;
 
 module.exports = {
-  getAllLinks
+  GET_LINKS,
 }

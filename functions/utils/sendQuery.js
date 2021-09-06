@@ -1,15 +1,9 @@
-var { Client } = require('cassandra-driver');
+const axios = require('axios');
 require('dotenv').config();
 
 module.exports = async (query, variables) => {
 
-  // Create and configure Cassandra client
-  var cql = new Client({
-    contactPoints: ['127.0.0.1'],
-    localDataCenter: 'datacenter1'
-  });
-
-  /*const { data } = await axios({
+  const { data: {data, errors} } = await axios({
     url: 'https://graphql.fauna.com/graphql',
     method: 'POST',
     headers: {
@@ -19,8 +13,12 @@ module.exports = async (query, variables) => {
       query,
       variables,
     }
-  });*/
+  });
 
-  return cql;
+  if (errors){
+    console.error(errors);
+    throw new Error('Something went wrong');
+  }
 
+  return data;
 }
