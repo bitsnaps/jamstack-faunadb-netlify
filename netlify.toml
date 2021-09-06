@@ -10,7 +10,7 @@
   directory = "functions/"
 # more at: https://docs.netlify.com/configure-builds/file-based-configuration/
 [[redirects]]
-  from = "api/*"
-  to = ".netlify/functions/:splat"
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
   status = 200
   force = true
