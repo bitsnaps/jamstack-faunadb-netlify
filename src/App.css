@@ -33,26 +33,3 @@ h3 {
 .red {
     color:#fe2c55;
 }
-
-p {
-    color: grey;
-    font-size: 12px;
-    line-height: 0;
-}
-
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid rgb(227,227,228);
-}
-
-.section {
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-}
-
-.break {
-    height: 10px;
-}
