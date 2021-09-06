@@ -1,5 +1,5 @@
-// const axios = require('axios');
-var { Client } = require('cassandra-driver');
+const axios = require('axios');
+// var { Client } = require('cassandra-driver');
 // const sendQuery = require('./utils/sendQuery');
 const { getAllLinks } = require('./utils/linkQueries');
 
@@ -31,19 +31,21 @@ exports.handler = async (event, context, callback) => {
     }
   });
 
-  const res = cql.execute(getAllLinks, [], function(err, result) {
+  const res = await cql.execute(getAllLinks, [], function(err, result) {
     if (err){
       console.log(JSON.stringify({msg: err }));
-      return {
+      data = {
         statusCode: 404,
         body: JSON.stringify({ msg: err })
       }
+      return data;
     } else {
       console.log(JSON.stringify(result.rows));
-      return {
+      data = {
         statusCode: 200,
-        body: JSON.stringify({ msg: result})
+        body: JSON.stringify({ msg: result.rows})
       }
+      return data;
     }
   });
 
