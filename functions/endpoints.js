@@ -4,7 +4,9 @@ exports.handler = async (event, context, callback) => {
     body: JSON.stringify({
       endpoint: 'http://localhost:8888/api',
       getLinks: 'http://localhost:8888/api/getLinks',
-      createLink: 'http://localhost:8888/api/createLink'
+      createLink: 'http://localhost:8888/api/createLink',
+      updateLink: 'http://localhost:8888/api/updateLink',
+      deleteLink: 'http://localhost:8888/api/deleteLink'
     })
   }
 };

@@ -15,30 +15,28 @@ npm install netlify-cli --save-dev
 sudo npm install netlify-cli --global
 ```
 
+## Run the app
+Now you can run the app on netlify local dev mode using:
+```
+netlify dev
+```
+
 ## Query FaunaDB
 
-Query all links:
+- Query all links:
 ```bash
 export FAUNA_SECRET_KEY=YOUR_SECRET_KEY_HERE
 curl -H "Authorization: Bearer $FAUNA_SECRET_KEY" http://localhost:8888/api/getLinks
 ```
-Create a new link:
+- Create a new link:
 ```bash
 curl -X POST -H "Authorization: Bearer $FAUNA_SECRET_KEY" -d '{"name":"AstraDB site","url":"http://datastax.com","description":"AstraDB site"}' http://localhost:8888/api/createLink
 ```
-
-## Setup database
+- Update a link:
+```bash
+curl -X PUT -H "Authorization: Bearer $FAUNA_SECRET_KEY" -d '{"_id":"308980245441020492","name":"FaunaDB site","url":"http://faunadb.com","description":"faunadb site","archived":false}' http://localhost:8888/api/updateLink
 ```
-CREATE KEYSPACE links WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1};
-USE links ;
-CREATE TABLE link(id uuid PRIMARY KEY, url text, name text, description text, archived boolean);
-```
-## Query examples:
-- Insert a row:
-```
-INSERT INTO link(id, name, url, description, archived) VALUES (uuid(), 'James Website', 'http://jamesquick.com', 'This is James Website', false );
-```
-- Select all rows:
-```
-SELECT * FROM links.link;
+- Delete a link:
+```bash
+curl -X DELETE -H "Authorization: Bearer $FAUNA_SECRET_KEY" -d '{"id":"308980245441020492"}' http://localhost:8888/api/deleteLink
 ```
